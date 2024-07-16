@@ -42,7 +42,12 @@ server.use(cors());
 
 mongoose.connect(process.env.DB_LOCATION,{
     autoIndex:true
-});
+})
+.then(() => {
+    console.log('Connected to MongoDB');
+}).catch((err) => {
+    console.error('Error connecting to MongoDB', err);
+});;
 
 const verifyJWT = (req,res, next)=>{
 
